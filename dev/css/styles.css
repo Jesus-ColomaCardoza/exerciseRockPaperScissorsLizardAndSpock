@@ -21,6 +21,9 @@ img{
 }
 .marker{
     text-align: center;
+}
+.marker,.timer{
+    text-align: center;
     font-size: 1.5rem;
     color: var(--fontwhite);
 }
@@ -67,14 +70,18 @@ img{
     border-radius: 10px;
     border: none;
 }
-
+.button--startgame{
+    margin-top: 1em;
+}
+/*  */
 
 .form-dates{
     width: 90%;
     margin: 0 auto 1em auto;
     padding: 1em;
     display: flex;   
-    justify-content: center; 
+    justify-content: center;
+    flex-wrap: wrap; 
     color: #fff;
     background-color: var(--backgroundblack);
 }

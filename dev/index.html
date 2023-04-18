@@ -11,12 +11,12 @@
 <body>
     <h1 class="title-h1">Rock Paper or Scissors</h1>
     <section class="dates">
-        <form class="form-dates" action="">
+        <form class="form-dates" id="form-dates">
             <div class="form-dates__field">
                 <label class="form-dates__label" for="number">Al mejor de:</label>
                 <input class="form-dates__number" type="number" name="number" id="number">
             </div>
-            <button class="button button--accept form-dates__accept">Accept</button>
+            <button class="button button--startgame form-dates__startgame">Start Game</button>
         </form>
     </section>
     <section class="game-zone">
@@ -31,36 +31,39 @@
                 <img src="img/scissors.png" alt="" srcset="">
             </div>
             <div class="option">
-                <img src="img/lagarto.png" alt="" srcset="">
+                <img src="img/lizard.png" alt="" srcset="">
             </div>
             <div class="option">
-                <img src="img/spou.png" alt="" srcset="">
+                <img src="img/spock.png" alt="" srcset="">
             </div>
         </div>
         <div class="choice">
-            <img src="img/spou.png" alt="" srcset="">
+            <img src="img/spock.png" alt="" srcset="">
         </div>      
-        <div class="marker" id="marker">1/1</div>  
+        <div class="marker" id="marker">0 - 0 </div>  
+        <div class="timer" id="timer">0 seconds</div>
+        <!-- edit timer -->
         <div class="choice">
-            <img src="img/spou.png" alt="" srcset="">
+            <img src="img/spock.png" alt="" srcset="">
         </div>        
-        <div class="options">
+        <div class="options" id="optionsplayer">
             <div class="option">
-                <img src="img/rock.png" alt="" srcset="">
+                <img class="options__img" src="img/rock.png" alt="" data-id="0">
             </div>
             <div class="option">
-                <img src="img/paper.png" alt="" srcset="">
+                <img class="options__img" src="img/paper.png" alt="" data-id="1">
             </div>
             <div class="option">
-                <img src="img/scissors.png" alt="" srcset="">
+                <img class="options__img" src="img/scissors.png" alt="" data-id="2">
             </div>
             <div class="option">
-                <img src="img/lagarto.png" alt="" srcset="">
+                <img class="options__img" src="img/lizard.png" alt="" data-id="3">
             </div>
             <div class="option">
-                <img src="img/spou.png" alt="" srcset="">
+                <img class="options__img" src="img/spock.png" alt="" data-id="4">
             </div>
         </div>
     </section>
+    <script src="js/index.js"></script>
 </body>
 </html>
