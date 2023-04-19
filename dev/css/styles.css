@@ -39,9 +39,8 @@ img{
 .option{
     border: 4px solid #303a97;
 }
-.option:hover{
-    border: 4px solid #97304b;
-
+.option:active{
+    transform: scale(.9);
 }
 .option img{
     height: 100%;

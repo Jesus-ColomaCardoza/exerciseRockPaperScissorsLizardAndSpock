@@ -2,6 +2,9 @@ const formDates = document.getElementById('form-dates');
 const optionsPlayer = document.getElementById('optionsplayer');
 const timer = document.getElementById('timer');
 const marker = document.getElementById('marker');
+const choicePlayer=document.getElementById('choiceplayer');
+const choiceComputer=document.getElementById('choicecomputer');
+const arrayOptions=Array.from(document.querySelectorAll('.options__img'));
 
 //variables
 let countWin;
@@ -55,7 +58,6 @@ gameRules[4][2] = 1
 gameRules[4][3] = 0
 gameRules[4][4] = -1
 
-
 formDates.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.classList.contains('form-dates__startgame') && formDates.number.value > 0) {
@@ -63,6 +65,7 @@ formDates.addEventListener('click', (e) => {
         console.log(countWin);
         startTimer();
         startGame();
+        formDates.reset();
     } else if (formDates.number.value < 0) {
         console.log('Enter number of rounds');
     }
@@ -70,13 +73,19 @@ formDates.addEventListener('click', (e) => {
 optionsPlayer.addEventListener('click', (e) => {
     if (e.target.classList.contains('options__img')) {
         if (seconds>=0) {// the timer doesn't finish yet
+            //we get the options that they (player and computer) chose
             optionPlayer = parseInt(e.target.dataset.id);
-            console.log(parseInt(e.target.dataset.id));
             optionComputer=getOptionComputer();
+            
+            //we show the player choice in the screem on the html
+            showChoise(choicePlayer,optionPlayer)
+            showChoise(choiceComputer,optionComputer);
+            
+            //we validate according the game rules 
             validate(optionPlayer,optionComputer);
             
             if (playing) {//When we still are playing
-            let i = 0
+                let i = 0
                 let newRoundInterval = setInterval(() => {
                     //we place the animation
                     setTimeout(() => {
@@ -88,12 +97,15 @@ optionsPlayer.addEventListener('click', (e) => {
                         clearInterval(newRoundInterval);
                         startTimer();
                     }
-                }, 1500)                   
+                }, 1500)
             }
+            //we update the marker
+            updateMarker();
+            //we stop the timer
+            clearInterval(timerInterval);
         }else{
             console.log('You ran out of time');
-            //the computer win one point.
-            countComputer++;
+
         }
     }
 })
@@ -119,14 +131,12 @@ const validate = (optionPlayer,optionComputer) => {
     } else if (gameRules[optionPlayer][optionComputer] == -1) { 
         //message: dead heat
         console.log('dead heat');
-    }
-    //we update the marker
-    marker.textContent=`${countPlayer} - ${countComputer} `
-    //we stop the timer
-    clearInterval(timerInterval);
-
+    }    
 }
 
+const updateMarker = () => {
+    marker.textContent=`👤 ${countPlayer} - ${countComputer} 🖥️`
+}
 const startTimer = () => {
     seconds = 5;
     timerInterval = setInterval( () => {
@@ -149,4 +159,7 @@ const startGame = () => {
 }
 const stopGame = () => {
     playing=false;
+}
+const showChoise=(choice,option)=>{
+    choice.firstElementChild.setAttribute('src',`${arrayOptions[option].src}`);
 }
